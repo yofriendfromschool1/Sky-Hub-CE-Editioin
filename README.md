@@ -1,2 +1,2 @@
-# Sky-Hub-CE-Editioin
+# Sky-Hub-CE-Edition
 For toolless and tool executors
