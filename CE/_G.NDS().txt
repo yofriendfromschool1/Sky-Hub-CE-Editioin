@@ -1,0 +1,174 @@
+_G.NDS = function()
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local TpToMap = Instance.new("TextButton")
+local ToStart = Instance.new("TextButton")
+local AutoWin = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.350451469, 0, 0.195760593, 0)
+Frame.Size = UDim2.new(0, 529, 0, 487)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.311909258, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.Gotham
+TextLabel.Text = "Vanta CE - NDS"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+ScrollingFrame.Parent = Frame
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BackgroundTransparency = 1.000
+ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.Size = UDim2.new(0, 529, 0, 487)
+
+TpToMap.Name = "TpToMap"
+TpToMap.Parent = ScrollingFrame
+TpToMap.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+TpToMap.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TpToMap.BorderSizePixel = 0
+TpToMap.Position = UDim2.new(0.14933838, 0, 0.0657084212, 0)
+TpToMap.Size = UDim2.new(0, 371, 0, 50)
+TpToMap.Font = Enum.Font.Gotham
+TpToMap.Text = "Tp To Map"
+TpToMap.TextColor3 = Color3.fromRGB(255, 255, 255)
+TpToMap.TextSize = 21.000
+
+ToStart.Name = "ToStart"
+ToStart.Parent = ScrollingFrame
+ToStart.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+ToStart.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ToStart.BorderSizePixel = 0
+ToStart.Position = UDim2.new(0.14933838, 0, 0.131416842, 0)
+ToStart.Size = UDim2.new(0, 371, 0, 50)
+ToStart.Font = Enum.Font.Gotham
+ToStart.Text = "Tp To Start"
+ToStart.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToStart.TextSize = 21.000
+
+AutoWin.Name = "AutoWin"
+AutoWin.Parent = ScrollingFrame
+AutoWin.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+AutoWin.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoWin.BorderSizePixel = 0
+AutoWin.Position = UDim2.new(0.14933838, 0, 0.201232031, 0)
+AutoWin.Size = UDim2.new(0, 371, 0, 50)
+AutoWin.Font = Enum.Font.Gotham
+AutoWin.Text = "Auto Win"
+AutoWin.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoWin.TextSize = 21.000
+
+Close.Name = "Close"
+Close.Parent = Frame
+Close.BackgroundColor3 = Color3.fromRGB(255, 140, 140)
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Size = UDim2.new(0, 52, 0, 50)
+Close.Font = Enum.Font.FredokaOne
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+Close.TextSize = 21.000
+
+TextLabel_2.Parent = ScreenGui
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(21, 21, 21)
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, 0.937655866, 0)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_2.Font = Enum.Font.Gotham
+TextLabel_2.Text = "Y To reopen the ui"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 21.000
+
+-- Scripts:
+
+local function RTJJDH_fake_script() -- TpToMap.LocalScript 
+	local script = Instance.new('LocalScript', TpToMap)
+
+	local plr = game.Players.LocalPlayer
+	local char = plr.Character
+	local humanoidRoot = char.HumanoidRootPart
+	script.Parent.MouseButton1Click:Connect(function()
+		humanoidRoot.CFrame = CFrame.new(-78.4038696, 47.3318977, 3.74577427, 0.976071298, 0.0511762016, 0.21134302, -0.0563660599, 0.998236895, 0.0186016075, -0.210018426, -0.0300690681, 0.97723496)
+	end)
+end
+coroutine.wrap(RTJJDH_fake_script)()
+local function OJAPQ_fake_script() -- ToStart.LocalScript 
+	local script = Instance.new('LocalScript', ToStart)
+
+	local plr = game.Players.LocalPlayer
+	local char = plr.Character
+	local humanoidRoot = char.HumanoidRootPart
+	script.Parent.MouseButton1Click:Connect(function()
+		humanoidRoot.CFrame = CFrame.new(-291.866547, 198.139465, 365.081055, -0.896629512, -0.0779984072, 0.435857564, -2.12623625e-08, 0.984362364, 0.176155448, -0.442781597, 0.157946154, -0.882608354)
+	end)
+end
+coroutine.wrap(OJAPQ_fake_script)()
+local function UGFQC_fake_script() -- AutoWin.LocalScript 
+	local script = Instance.new('LocalScript', AutoWin)
+
+	local plr = game.Players.LocalPlayer
+	local char = plr.Character
+	local humanoidRoot = char.HumanoidRootPart
+	script.Parent.MouseButton1Click:Connect(function()
+		humanoidRoot.CFrame = CFrame.new(-291.866547, 198.139465, 365.081055, -0.896629512, -0.0779984072, 0.435857564, -2.12623625e-08, 0.984362364, 0.176155448, -0.442781597, 0.157946154, -0.882608354)
+	end)
+end
+coroutine.wrap(UGFQC_fake_script)()
+local function IWSZPUR_fake_script() -- Close.LocalScript 
+	local script = Instance.new('LocalScript', Close)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Visible = false
+	end)
+end
+coroutine.wrap(IWSZPUR_fake_script)()
+local function FPIUFGJ_fake_script() -- ScreenGui.LocalScript 
+	local script = Instance.new('LocalScript', ScreenGui)
+
+	local uis = game.UserInputService
+	local tf = script.Parent.Frame
+	local vis = true
+	script.Parent.Frame.Active = true
+	script.Parent.Frame.Draggable = true
+	uis.InputBegan:Connect(function(input, P)
+		if P ==  true then return end
+		if input.KeyCode == Enum.KeyCode.Y then
+			if vis == true then
+				vis = false
+				tf.Visible = false
+			elseif vis == false then
+				vis = true
+				tf.Visible = true
+			end
+		end
+	end)
+end
+coroutine.wrap(FPIUFGJ_fake_script)()
+end
