@@ -301,6 +301,7 @@ getgenv().cloneref = function(...)
 	end
 	return unpack(res)
 end
+getgenv().crypt = {}
 getgenv().crypt.base64decode = function(data)
 	local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 	data = string.gsub(data, '[^'..b..'=]', '')
@@ -418,7 +419,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -602,7 +603,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -818,7 +819,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1066,7 +1067,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1311,7 +1312,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1524,7 +1525,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1739,7 +1740,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("CoreGui")
+		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1972,7 +1973,7 @@ getgenv().newcclosure = function(func)
 	getgenv()[#tab+1] = func
 end
 getgenv().rconsoletablerem = {}
-local par = game:GetService("CoreGui")
+local par = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 getgenv().rconsolecreate = function(text, color)
 	if not par:FindFirstChild("rconsole") then
 		getgenv().rconsoletablerem = {}
@@ -2308,7 +2309,7 @@ getgenv().setclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
@@ -2371,7 +2372,7 @@ getgenv().setrbxclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
@@ -2418,7 +2419,7 @@ getgenv().toclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
