@@ -396,7 +396,6 @@ end)
 getgenv().isrbxactive = function()
 	return IsWindowFocused
 end
-getgenv().isgameactive
 function isreadonly(instance, property)
 	return not (pcall(function()
 		instance[property] = instance[property] -- errors if readonly, or nonexistant
