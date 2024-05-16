@@ -198,6 +198,10 @@ script.Parent = nil
 getfenv().getgenv = function(layer)
 	return getfenv(layer)
 end
+-- put this in autoexc for 23 unc things will add on or replace some so delete the ones you already have (that is if they work)
+-- 23/83 27%
+-- Shoutout to me (Sky/jazminethecooles2001), luau, and vxsty
+-- if this doesnt work try just executing this or executing the ones u need or one by one or so
 getgenv().clonefunction = function(func)
 	return function(...)
 		local done = func(...)
@@ -322,7 +326,6 @@ getgenv().crypt.base64decode = function(data)
 	end))
 end
 getgenv().encrypt64k = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-getgenv().crypt = {}
 getgenv().crypt.base64encode = function(data)
 	return ((data:gsub('.', function(x) 
 		local r,b='',x:byte()
@@ -335,7 +338,17 @@ getgenv().crypt.base64encode = function(data)
 		return getgenv().encrypt64k:sub(c+1,c+1)
 	end)..({ '', '==', '=' })[#data%3+1])
 end
-getgenv().gethui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+-- vxsty made this
+
+-- vxsty made this
+getgenv().getcallingscript = function()
+	local s = debug.info(1, 's')
+	for i, v in next, game:GetDescendants() do
+		if v:GetFullName() == s then return v end
+	end
+	return nil
+end
+getgenv().gethui = game:GetService("CoreGui")
 getgenv().getscripts = function()
 	local stuff = game:GetDescendants()
 	local scripts = {}
@@ -373,31 +386,7 @@ getgenv().islclosure = function(func)
 	end
 	return toreturn
 end
-local UIS = game:GetService("UserInputService")
-
-local IsWindowFocused = true
-local Thread = coroutine.running()
-local con1 = UIS.InputChanged:Connect(function()
-	coroutine.resume(Thread)
-end)
-local con2 = UIS.WindowFocused:Connect(function()
-	coroutine.resume(Thread)
-end)
-coroutine.yield()
-con1:Disconnect()
-con2:Disconnect()
-IsWindowFocused = true
-UIS.WindowFocused:Connect(function()
-	IsWindowFocused = true
-end)
-UIS.WindowFocusReleased:Connect(function()
-	IsWindowFocused = false
-end)
-
-getgenv().isrbxactive = function()
-	return IsWindowFocused
-end
-function isreadonly(instance, property)
+getgenv().isreadonly = function(instance, property)
 	return not (pcall(function()
 		instance[property] = instance[property] -- errors if readonly, or nonexistant
 	end))
@@ -419,7 +408,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -603,7 +592,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -819,7 +808,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1067,7 +1056,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1312,7 +1301,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1525,7 +1514,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1740,7 +1729,7 @@ getgenv().messagebox = function(text,caption,style,callback)
 
 		Converted["_messagebox"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 		Converted["_messagebox"].Name = "messagebox"
-		Converted["_messagebox"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		Converted["_messagebox"].Parent = game:GetService("CoreGui")
 
 		Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1973,7 +1962,7 @@ getgenv().newcclosure = function(func)
 	getgenv()[#tab+1] = func
 end
 getgenv().rconsoletablerem = {}
-local par = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+local par = game:GetService("CoreGui")
 getgenv().rconsolecreate = function(text, color)
 	if not par:FindFirstChild("rconsole") then
 		getgenv().rconsoletablerem = {}
@@ -2243,6 +2232,8 @@ getgenv().rconsoleclear = function()
 		error("No Console Found.")
 	else
 		getgenv().rconsoleConverted["_TextBox"].Text = ""
+		getgenv().rconsoletablerem = {}
+		makeonestring = ""
 	end
 end
 getgenv().rconsoleprint = function(text, color)
@@ -2257,6 +2248,57 @@ getgenv().rconsoleprint = function(text, color)
 		table.insert(getgenv().rconsoletablerem, text)
 		makeonestring = table.concat(getgenv().rconsoletablerem, "")
 		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		if getgenv().rconsoleConverted["_TextBox"].TextColor3 ~= Color3.fromRGB(204.0000182390213, 204.0000182390213, 204.0000182390213) then
+			getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(204.0000182390213, 204.0000182390213, 204.0000182390213)
+		end
+	end
+end
+getgenv().rconsoleerr = function(text, color)
+	text = text .. "\n"
+	if not par:FindFirstChild("rconsole") then
+		rconsolecreate()
+		task.wait(0.25)
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(255, 0, 0)
+	else
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(255, 0, 0)
+	end
+end
+getgenv().rconsoleinfo = function(text, color)
+	text = text .. "\n"
+	if not par:FindFirstChild("rconsole") then
+		rconsolecreate()
+		task.wait(0.25)
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(0, 204, 255)
+	else
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(0, 204, 255)
+	end
+end
+getgenv().rconsolewarn = function(text, color)
+	text = text .. "\n"
+	if not par:FindFirstChild("rconsole") then
+		rconsolecreate()
+		task.wait(0.25)
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(238, 255, 0)
+	else
+		table.insert(getgenv().rconsoletablerem, text)
+		makeonestring = table.concat(getgenv().rconsoletablerem, "")
+		getgenv().rconsoleConverted["_TextBox"].Text = makeonestring
+		getgenv().rconsoleConverted["_TextBox"].TextColor3 = Color3.fromRGB(238, 255, 0)
 	end
 end
 getgenv().rconsoledestroy = function()
@@ -2268,7 +2310,18 @@ getgenv().rconsoledestroy = function()
 end
 getgenv().rconsolesettitle = function(text)
 	if not par:FindFirstChild("rconsole") then
-		error("No Console Found.")
+		rconsolecreate()
+		task.wait(0.25)
+		getgenv().rconsoleConverted["_TextLabel"].Text = text
+	else
+		getgenv().rconsoleConverted["_TextLabel"].Text = text
+	end
+end
+getgenv().rconsolename = function(text)
+	if not par:FindFirstChild("rconsole") then
+		rconsolecreate()
+		task.wait(0.25)
+		getgenv().rconsoleConverted["_TextLabel"].Text = text
 	else
 		getgenv().rconsoleConverted["_TextLabel"].Text = text
 	end
@@ -2309,7 +2362,7 @@ getgenv().setclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
@@ -2347,22 +2400,6 @@ getgenv().setclipboard = function(text)
 
 	coroutine.wrap(GBGAD_fake_script)()
 end
-local fpscap = 60
-function setfpscap(cap)
-	fpscap = cap
-end
-
-local clock = tick()
-game:GetService("RunService").RenderStepped:Connect(function()
-	while clock + 1 / fpscap > tick() do end
-	clock = tick()
-
-	task.wait()
-end)
-
-function getfpscap()
-	return fpscap
-end
 getgenv().setrbxclipboard = function(text)
 	local Converted = {
 		["_setcliptoclip"] = Instance.new("ScreenGui");
@@ -2372,7 +2409,7 @@ getgenv().setrbxclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
@@ -2419,7 +2456,7 @@ getgenv().toclipboard = function(text)
 
 	Converted["_setcliptoclip"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	Converted["_setcliptoclip"].Name = "setcliptoclip"
-	Converted["_setcliptoclip"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+	Converted["_setcliptoclip"].Parent = game:GetService("CoreGui")
 
 	Converted["_TextBox"].ClearTextOnFocus = false
 	Converted["_TextBox"].CursorPosition = -1
@@ -2457,6 +2494,23 @@ getgenv().toclipboard = function(text)
 
 	coroutine.wrap(GBGAD_fake_script)()
 end
+getgenv().fpscap = 60
+getgenv().getfpscap = function()
+	return getgenv().fpscap
+end
+--[[
+commented out bc it makes ur game laggy asf but it works 
+getgenv().setfpscap = function(cap)
+	getgenv().fpscap = cap
+end
+getgenv().clock = tick()
+game:GetService("RunService").RenderStepped:Connect(function()
+	while getgenv().clock + 1 / getgenv().fpscap > tick() do end
+	getgenv().clock = tick()
+
+	task.wait()
+end)]]
+
 _G.IY = scripts.LoadIY
 _G.CMDY = scripts.LoadCMDY
 _G.PI = scripts.LoadPI
