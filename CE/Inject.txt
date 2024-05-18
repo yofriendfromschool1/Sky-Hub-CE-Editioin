@@ -198,10 +198,8 @@ script.Parent = nil
 getfenv().getgenv = function(layer)
 	return getfenv(layer)
 end
--- put this in autoexc for 23 unc things will add on or replace some so delete the ones you already have (that is if they work)
--- 23/83 27%
+-- 31/83 37% 
 -- Shoutout to me (Sky/jazminethecooles2001), luau, and vxsty
--- if this doesnt work try just executing this or executing the ones u need or one by one or so
 getgenv().clonefunction = function(func)
 	return function(...)
 		local done = func(...)
@@ -216,94 +214,8 @@ getgenv().clonefunction = function(func)
 		return toreturn
 	end
 end
-getgenv().cloneref = function(...)
-	local objs = table.pack(...)
-	local res = {}
-	local function clone(obj)
-		if typeof(obj) == "table" then
-			local copy = {}
-			for i,v in pairs(obj) do
-				copy[i] = v
-			end
-			return copy
-		elseif typeof(obj) == "Instance" then
-			if obj ~= game.TweenService then
-				print(obj,"is not a valid member to be cloned.")
-				return obj
-			else
-				local metaInstances = {}
-				local function table_find(t,v)
-					return (table.find(t,v) or t[v]) ~= nil
-				end
-				local function convertToMetaInstance(object,options)
-					if object == game:GetService("TweenService") then return object end
-
-					local options = options or {}
-					local customMethods = options.CustomMethods or {}
-					local blockMethods = options.BlockMethods or {}
-					local metaInstance
-
-					local dest = {customMethods.destroy, customMethods.Destroy}
-					customMethods.destroy = function()
-						for _,v in pairs(dest) do
-							if v then
-								v()
-							end
-						end
-						if not object then
-							local c = {}
-							for i,v in pairs(metaInstances) do
-								if i == metaInstance or not v then continue end
-								c[i] = v
-							end
-							metaInstances = c
-							c = nil
-						else
-							object:Destroy()
-						end
-					end
-					customMethods.Destroy = customMethods.destroy
-
-					metaInstance = setmetatable({},
-					{
-						__index = function(self, index)
-							local found = table_find(customMethods, index)
-							if found then
-								return customMethods[index]
-							else
-								return object[index]
-							end
-						end,
-						__newindex = function(self, index, value)
-							if blockMethods[index] == true then
-								error("Failed to set "..tostring(index).." to "..tostring(value))
-							elseif typeof(blockMethods[index]) == "function" then
-								return blockMethods[index](value)
-							end
-							object[index] = value
-						end,
-						__tostring = function()
-							return tostring(object)
-						end,
-						__metatable = "Metatable is locked!"
-					}
-					)
-
-					metaInstances[metaInstance] = object
-
-					return metaInstance
-					--return object
-				end
-				return metaInstances[obj] or convertToMetaInstance(obj)
-			end
-		else
-			return obj
-		end
-	end
-	for i,v in pairs(objs) do
-		res[#res+1] = clone(v)
-	end
-	return unpack(res)
+getgenv().cloneref = function(a)
+	local s, _ = pcall(function() return a:Clone() end) return s and _ or a
 end
 getgenv().crypt = {}
 getgenv().crypt.base64decode = function(data)
@@ -339,7 +251,26 @@ getgenv().crypt.base64encode = function(data)
 	end)..({ '', '==', '=' })[#data%3+1])
 end
 -- vxsty made this
-
+-- creds to vxsty
+getgenv().crypt.generatekey = function(optionalSize)
+	local key = ''
+	local a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	for i = 1, optionalSize or 44 do
+		local n = math.random(1, #a)
+		key = key .. a:sub(n, n)
+	end
+	return getgenv().crypt.base64encode(key)
+end
+-- creds to vxsty
+if not getgenv().crypt then
+	getgenv().crypt = {}
+end
+getgenv().crypt.generatebytes = function(size)
+	if type(size) ~= 'number' then
+		return error('missing arguement #1 to \'generatebytes\' (number expected)')
+	end
+	return getgenv().crypt.generatekey(size) -- must run this unc fix first
+end
 -- vxsty made this
 getgenv().getcallingscript = function()
 	local s = debug.info(1, 's')
@@ -348,7 +279,9 @@ getgenv().getcallingscript = function()
 	end
 	return nil
 end
-getgenv().gethui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+getgenv().gethui = function()
+	return game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+end
 getgenv().getscripts = function()
 	local stuff = game:GetDescendants()
 	local scripts = {}
@@ -366,7 +299,7 @@ getgenv().hookfunction = function(func, rep)
 	end
 end
 getgenv().identifyexecutor = function()
-	return "Sky's & Luau UNC"
+	return "Sky's, Luau, vxsty UNC"
 end
 getgenv().iscclosure = function(func)
 	local toreturn = false
